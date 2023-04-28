@@ -1,0 +1,28 @@
+.side-nav{
+    flex-grow: 5;
+}
+
+.main-content{
+    flex-grow: 8;
+}
+
+.flex-container {
+    display: flex;
+    height: calc(100vh - 8.5rem);
+}
+
+.h100{
+    height: 100%;
+}
+
+.header{
+    height: 4rem;
+}
+
+.footer{
+ position: absolute;
+ bottom: 0;
+ height: 4rem;
+ left: 0;
+ width: 100%;
+}

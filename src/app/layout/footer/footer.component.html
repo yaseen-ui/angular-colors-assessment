@@ -1,0 +1,4 @@
+<div class="h-100" [ngStyle]="{'background-color': counter < 9 ? '': 'red'}">
+    Footer Works!
+    <app-counter-button (counterValue)="changeColor($event)"></app-counter-button>
+</div>
