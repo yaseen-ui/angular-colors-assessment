@@ -1,4 +1,6 @@
-<div class="h-100" [ngStyle]="{'background-color': counter < 9 ? '': 'red'}">
+<div class="h-100 text-center" [ngStyle]="{'background-color': maxLimitReached ? 'red': ''}">
     Footer Works!
-    <app-counter-button (counterValue)="changeColor($event)"></app-counter-button>
+    <div>
+        <app-counter-button (counterValue)="changeColor($event)"></app-counter-button>
+    </div>
 </div>

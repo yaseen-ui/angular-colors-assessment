@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { AppService } from 'src/app/app.service';
 
 @Component({
   selector: 'app-header',
@@ -7,8 +6,10 @@ import { AppService } from 'src/app/app.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+  public maxLimitReached = false;
   public counter = 0;
-  public changeColor(counter: number) {
-    this.counter = counter;
+  public changeColor(event: any) {
+    this.counter = event.counter;
+    this.maxLimitReached = event.flag;
   }
 }

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { AppService } from '../../app.service';
 
 @Component({
@@ -6,21 +6,28 @@ import { AppService } from '../../app.service';
   templateUrl: './counter-button.component.html',
   styleUrls: ['./counter-button.component.scss']
 })
-export class CounterButtonComponent implements OnInit {
+export class CounterButtonComponent implements OnInit, OnChanges {
   @Output() counterValue: EventEmitter<any>;
+  @Input() counter = 0;
   public incrementCounter : any;
-  public counter = 0;
   constructor(public appservice: AppService) {
-    this.incrementCounter = this.appservice.increment();
+    this.incrementCounter = this.appservice.increment(0);
     this.counterValue = new EventEmitter<any>();
   }
 
   ngOnInit(): void {
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    this.incrementCounter = this.appservice.increment(this.counter);
+  }
+
   public onIncrement() {
-    console.log('arey')
     this.counter = this.incrementCounter();
-    this.counterValue.emit(this.counter)
+    if(this.counter > this.appservice.maxLimit) {
+      this.counterValue.emit({flag: true, counter: this.counter});
+    } else {
+      this.counterValue.emit({flag: false, counter: this.counter});
+    }
   }
 }

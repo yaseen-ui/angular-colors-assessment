@@ -6,8 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./content.component.scss']
 })
 export class ContentComponent {
+  public maxLimitReached = false;
   public counter = 0;
-  public changeColor(counter: number) {
-    this.counter = counter;
+  public changeColor(event: any) {
+    this.counter = event.counter;
+    this.maxLimitReached = event.flag;
   }
 }

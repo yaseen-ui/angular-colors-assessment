@@ -1,4 +1,9 @@
-<div class="h-100" [ngStyle]="{'background-color': counter < 9 ? '': 'red'}">
-    Content Works!
-    <app-counter-button (counterValue)="changeColor($event)"></app-counter-button>
+<div class="h-100 content-sec" [ngStyle]="{'background-color': maxLimitReached ? 'red': ''}">
+    <h6>Content Works!</h6>
+    <div class="button-sec">
+        <app-counter-button (counterValue)="changeColor($event)" [counter]="counter"></app-counter-button>
+    </div>
+    <div class="button-sec">
+        <app-counter-button (counterValue)="changeColor($event)" [counter]="counter"></app-counter-button>
+    </div>
 </div>
